@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Simple stock tracker using flask and bokeh with data from QUANDL">
     <meta name="author" content="Jeremy Smith">
 
-		<title>Simple Stock Tracker</title>
+    <title>Simple Stock Tracker</title>
 
     <!-- Bootstrap core CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arimo">
@@ -20,8 +20,8 @@
   
   </head>
 
-	<body>
-		<div class="container">
+  <body>
+    <div class="container">
       <div class="page-header">
         <h2>Simple Stock Tracker</h2>
         <h4>Jeremy Smith</h4>
@@ -55,10 +55,10 @@
         {{ plot_div|indent(8)|safe }}
         <p>Data from QUANDL WIKI EOD stock prices</p>
       </div>
-		</div>
+    </div>
 
     <!-- Bootstrap and jQuery core JavaScript-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	</body>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
 </html>
