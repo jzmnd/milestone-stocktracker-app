@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 fetchdatalib.py
 Functions for fetching stock data from QUANDL and parsing to dataframe

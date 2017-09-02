@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 app.py
 Flask on Herouku web app for milestone project
