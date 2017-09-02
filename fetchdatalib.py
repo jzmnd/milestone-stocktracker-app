@@ -15,8 +15,11 @@ from datetime import timedelta
 
 
 # Load the config file
-with open('config.yml', 'r') as f:
-    config = yaml.load(f)
+try:
+    with open('config.yml', 'r') as f:
+        config = yaml.load(f)
+except IOError:
+    config = None
 
 # Set global variables
 QUANDL_URL = "https://www.quandl.com/api/v3/datatables/WIKI/PRICES"
