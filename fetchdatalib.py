@@ -5,18 +5,20 @@ Functions for fetching stock data from QUANDL and parsing to dataframe
 Created by Jeremy Smith on 2017-08-29
 """
 
+import os
 import simplejson as json
 import requests
 import pandas as pd
 import yaml
 from datetime import timedelta
 
-QUANDL_URL = "https://www.quandl.com/api/v3/datatables/WIKI/PRICES"
-COLUMNS = "ticker,date,open,high,low,close"
 
 with open('config.yml', 'r') as f:
     config = yaml.load(f)
-    API_KEY = config['quandl']['apikey']
+
+QUANDL_URL = "https://www.quandl.com/api/v3/datatables/WIKI/PRICES"
+COLUMNS = "ticker,date,open,high,low,close"
+QUANDL_API_KEY = os.environ.get("QUANDL_API_KEY", config['quandl']['apikey'])
 
 
 def generate_date_str(date, days=30):
@@ -36,7 +38,11 @@ def parseJSONresponse(response):
 
 def getEODprice(ticker, date):
     """Get EOD price for a given ticker and date string and output dataframe"""
-    url = "{:s}?qopts.columns={:s}&date={:s}&ticker={:s}&api_key={:s}".format(QUANDL_URL, COLUMNS, date, ticker, API_KEY)
+    url = "{:s}?qopts.columns={:s}&date={:s}&ticker={:s}&api_key={:s}".format(QUANDL_URL,
+                                                                              COLUMNS,
+                                                                              date,
+                                                                              ticker,
+                                                                              QUANDL_API_KEY)
     response = requests.get(url)
     datatext, status = parseJSONresponse(response)
     cols = [c['name'] for c in datatext['datatable']['columns']]

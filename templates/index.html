@@ -13,19 +13,47 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arimo">
+
+    {{ js_resources|indent(4)|safe }}
+    {{ css_resources|indent(4)|safe }}
+    {{ plot_script|indent(4)|safe }}
+  
   </head>
 
 	<body>
 		<div class="container">
       <div class="page-header">
         <h2>Simple Stock Tracker</h2>
-        <h3>Jeremy Smith</h3>
+        <h4>Jeremy Smith</h4>
       </div>
-      <div class="col-lg-6">
-        <p>Enter ticker</p>
+
+      <div class="col-md-12">
+        <form method="post">
+          <div class="form-group row">
+            <div class="col-md-6">
+
+              {% for g in graphtyps %}
+              <label class="radio-inline">
+                <input type="radio" name="graphtyp" value="{{ g.value }}" {% if graphtyp == g.value %}checked{% endif %}> {{ g.name }}
+              </label>
+              {% endfor %}
+
+            </div>
+            <div class="col-md-6">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="TICKER" name="ticker" required>
+                <div class="input-group-btn">
+                  <button type="submit" class="btn">Go</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="col-lg-6">
-        <p>Options</p>
+
+      <div class='col-md-12'>
+        {{ plot_div|indent(8)|safe }}
+        <p>Data from QUANDL WIKI EOD stock prices</p>
       </div>
 		</div>
 

@@ -3,3 +3,11 @@ body {
   font-weight: 300;
   color: #555;
 }
+
+h4 {
+  color: #aaa;
+}
+
+input {
+    text-transform: uppercase;
+}
