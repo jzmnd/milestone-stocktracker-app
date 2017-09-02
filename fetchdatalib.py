@@ -18,13 +18,13 @@ from datetime import timedelta
 try:
     with open('config.yml', 'r') as f:
         config = yaml.load(f)
+    QUANDL_API_KEY = config['quandl']['apikey']
 except IOError:
-    config = None
+    QUANDL_API_KEY = os.environ.get("QUANDL_API_KEY")
 
 # Set global variables
 QUANDL_URL = "https://www.quandl.com/api/v3/datatables/WIKI/PRICES"
 COLUMNS = "ticker,date,open,high,low,close"
-QUANDL_API_KEY = os.environ.get("QUANDL_API_KEY", config['quandl']['apikey'])
 
 
 def generate_date_str(date, days=30):
